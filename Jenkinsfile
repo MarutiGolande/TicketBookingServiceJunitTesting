@@ -4,23 +4,23 @@ pipeline {
         stage('git repo & clean') {
             steps {
                 //bat "git clone https://github.com/MarutiGolande/TicketBookingServiceJunitTesting.git"
-                bat "git pull"
-                bat "mvn clean -f TicketBookingServiceJunitTesting"
+                sh "git pull"
+                sh "mvn clean -f TicketBookingServiceJunitTesting"
             }
         }
         stage('install') {
             steps {
-                bat "mvn install -f TicketBookingServiceJunitTesting"
+                sh "mvn install -f TicketBookingServiceJunitTesting"
             }
         }
         stage('test') {
             steps {
-                bat "mvn test -f TicketBookingServiceJunitTesting"
+                sh "mvn test -f TicketBookingServiceJunitTesting"
             }
         }
         stage('package') {
             steps {
-                bat "mvn package -f TicketBookingServiceJunitTesting"
+                sh "mvn package -f TicketBookingServiceJunitTesting"
             }
         }
     }
